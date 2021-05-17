@@ -26,7 +26,20 @@ class MultipleLayers(Layer):
 
     def forward(self, input):
         self.input=input
-        return np.dot(self.w,self.input)
+        return np.dot(self.w,self.input)+self.b
 
     def backward(self, output_gradient, learning_rate):
-        pass  
+        """
+            Notations
+            output_=Y
+            weights_=W
+            Eror=W
+            Bias=B
+        """
+        #(1) ∂E/∂W=∂E/∂Y * X.transposed
+        w_gradient=np.dot(output_gradient,self.input.T)
+        #(2) ∂E/∂B=∂E/∂Y
+        self.weights-=learning_rate*w_gradient
+        self.bias-=learning_rate*output_gradient
+        # (3)∂E/∂X= W.transposed * ∂E/∂y
+        return np.dot(self.w.T,output_gradient)
