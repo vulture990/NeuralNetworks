@@ -10,6 +10,7 @@
 #### Y= W*X +B
 
 ### Backwarad Propagation:
+ #### Based on the following equations is how to adjust the weight and biases
  #### (1) ∂E/∂W=∂E/∂Y * X.transposed
  #### (2) ∂E/∂B=∂E/∂Y
- #### (3)∂E/∂X= W.transposed * ∂E/∂y
+ #### (3)∂E/∂X= W.transposed * ∂E/∂Y
